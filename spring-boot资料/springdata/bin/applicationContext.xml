@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 添加对service层的包进行自动扫描的功能  对指定的包进行扫描-->
+    <context:component-scan base-package="com.shiran.springdata"></context:component-scan>
+    
+	<!-- 1. 配置数据源 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="root"></property>
+		<property name="password" value="admin"></property>
+		<!-- 外置引入的时候报错 没有解决 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///jpa"></property>
+	</bean>
+
+	<!--2.配置jpa的EntityManagerFactory -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- jpa实现产品的适配器 -->
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<!-- 扫描添加entity注解的包 -->
+		<property name="packagesToScan" value="com.shiran.springdata"></property>
+		<!-- jpa的属性实现 -->
+		<property name="jpaProperties">
+			<props>
+				<!-- 二级缓存相关 -->
+				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> 
+					<prop key="net.sf.ehcache.configurationResourceName">ehcache-hibernate.xml</prop> -->
+				<!-- 生成的数据表的列的映射策略 -->
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<!-- hibernate 基本属性 -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--3.配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<!--4.配置支持注解的事物 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!--5.配置spring data -->
+	<!-- 加入jpa的命名空间 -->
+	<!-- base-package:扫描repository bean的package  放到IOC容器中 -->
+	<jpa:repositories base-package="com.shiran.springdata"
+	    entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
+
+
+</beans>
