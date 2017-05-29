@@ -1,0 +1,55 @@
+server:
+  port: 7900
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none  #jpa是依赖Hibernate的   这里设置ddl启动的时候时候生成语句
+  datasource:
+    platform: h2   #标识使用的数据源
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+  application:
+    name: microservice-provider-user    #配置服务的名称  这里最好使用全部的小写  介意全部使用小写
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  #打印sql  同时打印参数之类的
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.shiran: DEBUG
+    
+#3. 这个是eureka的配置  这个表示的是注册到的eureka server服务端的地址
+eureka:
+  client:
+    healthcheck:    #健康检查   需要spring-boot-starter-actuator依赖
+       enabled: true
+    serviceUrl:
+       defaultZone: http://user:password123@localhost:8761/eureka   #这里是使用curl(使用的是http的方式进行认证)的方式进行认证
+#      defaultZone: http://localhost:8761/eureka/  #  这里没有设置密码 这里是没有进行eureka server认证时的地址     eureka-ha的时候这里可以进行多个eureka地址   使用,好进行分割
+      
+     
+#  ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}}.  这个是默认的显示形式
+  instance:
+    prefer-ip-address: true   #不配置默认主机名   这里表示使用ip进行注册   默认是false 在服务的注册鼠标移上去的时候就是一ip的形势进行显示的
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}} #进行显示形式重定义
+    metadata-map:  #自定义metadata元素据   http://localhost:8761/eureka/apps/microservice-provider-user(进行查看元素据)
+      zone: ABC    #这个是eureka内置的   eureka.instance.metadataMap.zone 这个是eureka识别的   可以回影响客户端行为
+      lilizhou: BBC    #这个是自己定义的  这个不会影响客户端的行为  
+#    hostname: user     # 在windows的host中配置user 127.0.0.1 的映射关系 同时 #掉instance-id  prefer-ip-address移上去看状态的时候是用user：端口的形式进行映射
+#    ip-address: 127.0.0.1    指定ip
+#    appname: USER-SERVICE-HAHA
+#    lease-expiration-duration-in-seconds: 5         #续约的周期  more是  private int leaseRenewalIntervalInSeconds = 30（默认的周期）
+
+
+      
+      
+
+    
+    
+    
+   
+    
+   
+ 

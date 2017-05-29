@@ -1,0 +1,4 @@
+#不进行注册到eureka上面
+server:
+  port: 8030   #eureka的默认端口
+  

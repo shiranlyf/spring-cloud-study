@@ -1,0 +1,25 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: microservice-hystrix-turbine
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://user:password123@localhost:8761/eureka 
+  instance:
+    prefer-ip-address: true # 不配置默认主机名   这里表示使用ip进行注册   默认是false 在服务的注册鼠标移上去的时候就是一ip的形势进行显示的
+#    lease-expiration-duration-in-seconds: 5  #用于超时
+    
+# turbine的配置
+turbine:
+   aggregator:
+        clusterConfig: MICROSERVICE-COMSUMER-MOVIE-RIBBON-WITH-HYSTRIX3  #AppName
+   appConfig: microservice-comsumer-movie-ribbon-with-hystrix3      #注册到eureka上的app名称
+   
+#turbine.instanceUrlSuffix.MICROSERVICE-COMSUMER-MOVIE-RIBBON-WITH-HYSTRIX2: /ribbon/hystrix.stream  #在连接的时候url(前面http://localhost.8010....省略)
+logging:
+  level:
+    root: INFO
+    com.netflix.turbine.monitor: DEBUG
+

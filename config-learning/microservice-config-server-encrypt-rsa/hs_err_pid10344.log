@@ -1,0 +1,151 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=10344, tid=5876
+#
+# JRE version:  (8.0_91-b15) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.91-b15 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000020ab000):  JavaThread "Unknown thread" [_thread_in_vm, id=5876, stack(0x00000000022f0000,0x00000000023f0000)]
+
+Stack: [0x00000000022f0000,0x00000000023f0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00000000020ab000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=5876, stack(0x00000000022f0000,0x00000000023f0000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 18944K, used 327K [0x00000000eb180000, 0x00000000ec680000, 0x0000000100000000)
+  eden space 16384K, 2% used [0x00000000eb180000,0x00000000eb1d1ec8,0x00000000ec180000)
+  from space 2560K, 0% used [0x00000000ec400000,0x00000000ec400000,0x00000000ec680000)
+  to   space 2560K, 0% used [0x00000000ec180000,0x00000000ec180000,0x00000000ec400000)
+ ParOldGen       total 44032K, used 0K [0x00000000c1400000, 0x00000000c3f00000, 0x00000000eb180000)
+  object space 44032K, 0% used [0x00000000c1400000,0x00000000c1400000,0x00000000c3f00000)
+ Metaspace       used 746K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 75K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x00000000117b0000,0x00000000119b0000] byte_map_base: 0x00000000111a6000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000696f2f70
+ Begin Bits: [0x0000000012040000, 0x0000000012ff0000)
+ End Bits:   [0x0000000012ff0000, 0x0000000013fa0000)
+
+Polling page: 0x0000000000410000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x00000000023f0000, 0x0000000002660000, 0x00000000113f0000]
+ total_blobs=58 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.276 loading class java/lang/Short
+Event: 0.276 loading class java/lang/Short done
+Event: 0.276 loading class java/lang/Integer
+Event: 0.276 loading class java/lang/Integer done
+Event: 0.276 loading class java/lang/Long
+Event: 0.276 loading class java/lang/Long done
+Event: 0.277 loading class java/lang/NullPointerException
+Event: 0.277 loading class java/lang/NullPointerException done
+Event: 0.277 loading class java/lang/ArithmeticException
+Event: 0.277 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x000000013f420000 - 0x000000013f457000 	D:\setup\jdk1.8\bin\javaw.exe
+0x0000000077560000 - 0x000000007770a000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000077340000 - 0x000000007745f000 	C:\Windows\system32\kernel32.dll
+0x000007fefd500000 - 0x000007fefd56b000 	C:\Windows\system32\KERNELBASE.dll
+0x000007feff0d0000 - 0x000007feff1ab000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefe7e0000 - 0x000007fefe87f000 	C:\Windows\system32\msvcrt.dll
+0x000007fefeaa0000 - 0x000007fefeabf000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007feff5c0000 - 0x000007feff6ed000 	C:\Windows\system32\RPCRT4.dll
+0x0000000077460000 - 0x000000007755a000 	C:\Windows\system32\USER32.dll
+0x000007feff050000 - 0x000007feff0b7000 	C:\Windows\system32\GDI32.dll
+0x000007fefea90000 - 0x000007fefea9e000 	C:\Windows\system32\LPK.dll
+0x000007fefe6b0000 - 0x000007fefe77a000 	C:\Windows\system32\USP10.dll
+0x000007fefb960000 - 0x000007fefbb54000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\COMCTL32.dll
+0x000007fefe600000 - 0x000007fefe671000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefe680000 - 0x000007fefe6ae000 	C:\Windows\system32\IMM32.DLL
+0x000007fefd760000 - 0x000007fefd869000 	C:\Windows\system32\MSCTF.dll
+0x000000006c130000 - 0x000000006c202000 	D:\setup\jdk1.8\bin\msvcr100.dll
+0x0000000068ee0000 - 0x0000000069773000 	D:\setup\jdk1.8\bin\server\jvm.dll
+0x000007feeead0000 - 0x000007feeead9000 	C:\Windows\system32\WSOCK32.dll
+0x000007feff570000 - 0x000007feff5bd000 	C:\Windows\system32\WS2_32.dll
+0x000007feff0c0000 - 0x000007feff0c8000 	C:\Windows\system32\NSI.dll
+0x000007fef4d50000 - 0x000007fef4d8b000 	C:\Windows\system32\WINMM.dll
+0x000007fefc490000 - 0x000007fefc49c000 	C:\Windows\system32\VERSION.dll
+0x0000000077720000 - 0x0000000077727000 	C:\Windows\system32\PSAPI.DLL
+0x000000006c5c0000 - 0x000000006c5cf000 	D:\setup\jdk1.8\bin\verify.dll
+0x0000000069870000 - 0x0000000069899000 	D:\setup\jdk1.8\bin\java.dll
+0x000000006ac10000 - 0x000000006ac26000 	D:\setup\jdk1.8\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=3701 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dfile.encoding=UTF-8 
+java_command: com.shiran.cloud.ConfigServerApplication --spring.output.ansi.enabled=always
+java_class_path (initial): F:\setup\spring-tool-suite-3.8.4.RELEASE-e4.6.3-win32-x86_64\workspace\code\config-learning\microservice-config-server-encrypt-rsa\target\classes;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\cloud\spring-cloud-config-server\1.2.1.RELEASE\spring-cloud-config-server-1.2.1.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\cloud\spring-cloud-config-client\1.2.1.RELEASE\spring-cloud-config-client-1.2.1.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\boot\spring-boot-autoconfigure\1.4.6.RELEASE\spring-boot-autoconfigure-1.4.6.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\boot\spring-boot\1.4.6.RELEASE\spring-boot-1.4.6.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\cloud\spring-cloud-commons\1.1.4.RELEASE\spring-cloud-commons-1.1.4.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\cloud\spring-cloud-context\1.1.4.RELEASE\spring-cloud-context-1.1.4.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\spring-web\4.3.8.RELEASE\spring-web-4.3.8.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\spring-aop\4.3.8.RELEASE\spring-aop-4.3.8.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\spring-beans\4.3.8.RELEASE\spring-beans-4.3.8.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\spring-context\4.3.8.RELEASE\spring-context-4.3.8.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\org\springframework\spring-core\4.3.8.RELEASE\spring-core-4.3.8.RELEASE.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\com\fasterxml\jackson\core\jackson-annotations\2.8.8\jackson-annotations-2.8.8.jar;F:\setup\apache-maven-3.3.9-bin\localrepositoryposition\com\fasterxml\ja
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\setup\jdk1.7
+PATH=D:/setup/jdk1.8/bin/server;D:/setup/jdk1.8/bin;D:/setup/jdk1.8/lib/amd64;C:\ProgramData\Oracle\Java\javapath;D:\setup\django\python3.5\Scripts\;D:\setup\django\python3.5\;D:\setup\armv1.2\bin;D:\setup\python2.7;D:\app\Administrator\product\11.1.0\db_2\bin;F:\setup\scala\bin;D:\java\apache-maven-2.2.1\bin;%M2_HOME%\bin;D:\setup\jdk1.7;D:\setup\python34\Scripts;D:\setup\python34;C:\Program Files (x86)\Common Files\NetSarang;D:\setup\jdk1.7\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;F:\setup\scala\bin;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;D:\setup\git\Git\cmd;D:\setup\tortorsegit1.8\bin;D:\setup\node-v6.10.3\;C:\Users\Administrator\AppData\Roaming\npm;F:\setup\spring-tool-suite-3.8.4.RELEASE-e4.6.3-win32-x86_64\sts-bundle\sts-3.8.4.RELEASE;
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 (6.1.7601.19135)
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 4108656k(758592k free), swap 6657460k(8480k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.91-b15) for windows-amd64 JRE (1.8.0_91-b15), built on May 20 2016 17:43:15 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Sun May 28 16:35:01 2017
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

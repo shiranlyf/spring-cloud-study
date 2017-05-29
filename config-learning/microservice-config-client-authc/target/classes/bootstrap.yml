@@ -1,0 +1,10 @@
+#profile: abc
+spring:
+  cloud:
+    config:
+      #uri: http://user:password123@localhost:8080    #user:password123是config server端认证的用户名和密码   属性的优先级比uri的优先级高
+      uri: http://localhost:8080   #curl style
+      username: user   
+      password: password123
+      profile: dev
+      label: master #当configure的后端存贮是git 默认是master 

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: microservice-gateway-zuul
+server:
+  port: 8040   #eureka的默认端口
+  
+eureka:
+  client:
+    service-url:
+       defaultZone: http://user:password123@localhost:8761/eureka    #这个是eureka server授权的模式
+  instance:
+    prefer-ip-address: true  #使用ip  而不是主机名
+
+zuul:
+  ignoredServices: microservice-comsumer-movie-ribbon-with-hystrix  #  ,多个配置进行分割   这里就不会进行反向代理   不能进行访问
+  routes:
+     microservice-provider-user: /user/**  #http://localhost:8040/user/simple/1  可以这样进行反向代理
+
+    
+    
+    
+    
+    
+    
+    

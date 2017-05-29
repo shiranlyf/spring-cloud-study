@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: microservice-gateway-zuul
+server:
+  port: 8040   #eureka的默认端口
+  
+#eureka 配置
+eureka:
+  client:
+    service-url:
+       defaultZone: http://user:password123@localhost:8761/eureka    #这个是eureka server授权的模式
+  instance:
+    prefer-ip-address: true  #使用ip  而不是主机名
+  
+#zuul 的配置      会将注册到eureka中的微服务进行路由转发http://localhost:8040/api/microservice-provider-user-v1/simple/1
+zuul: 
+  prefix: /simple    #设置了这个属性在访问     访问地址前缀     这两个联合使用     使用与contextPath有后缀的情况
+  strip-prefix: false   #默认为true  剥掉前缀    上面的地址有无前缀都不能访问 http://localhost:8040/simple/microservice-provider-user-v1/1
+
+#日志打印
+logging:
+  level:
+    com.netflix: debug   #这是打印的日志级别
+    
+    
+#application.yml   这个是细粒度的路径忽略   使用正则表达式进行匹配
+# zuul:
+#  ignoredPatterns: /**/admin/**
+#  routes:
+#    users: /myusers/**
+#This means that all calls such as "/myusers/101" will be forwarded to "/101" on the "users" 
+#service. But calls including "/admin/" will not resolve.
+
+
+#application.yml   进行服务优先级的配置
+#zuul:
+#  routes:
+#    users:
+#      path: /myusers/**
+#    legacy:
+#      path: /**
+#If you were to use a properties file, the legacy path may end up in front 
+#of the users path rendering the users path unreachable.
+
+
+    
+    
+    
+    
+    
+    

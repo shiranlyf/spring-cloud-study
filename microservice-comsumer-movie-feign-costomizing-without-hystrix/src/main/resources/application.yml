@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: microservice-comsumer-movie-feign-costomizing-without-hystrix
+server:
+  port: 7901   #消费者只需要进行端口的配置
+#3. 这个是eureka的配置  这个表示的是注册到的eureka server服务端的地址
+eureka:
+  client:
+    healthcheck:    #健康检查   需要spring-boot-starter-actuator依赖
+       enabled: true
+    serviceUrl:
+       defaultZone: http://user:password123@localhost:8761/eureka   #这里是使用curl(使用的是http的方式进行认证)的方式进行认证
+#      defaultZone: http://localhost:8761/eureka/  这里是没有进行eureka server认证时的地址
+      
+#  ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}}.  这个是默认的显示形式
+  instance:
+    prefer-ip-address: true   #这里表示使用ip进行注册   默认是false 在服务的注册鼠标移上去的时候就是一ip的形势进行显示的
+    
+# Feign logging
+logging:
+    level:
+      com.shiran.cloud.UserFeignClient: DEBUG
+     
+# 默认第一次超过一秒就会超时    解决超时的三种方法
+# 设置 请求的超时时间
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+# 禁用 超时时间
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: false
+#feign.hystrix.enabled: false  ### 索性禁用feign的hystrix 
+    

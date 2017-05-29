@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: microservice-gateway-zuul
+server:
+  port: 8040   #eureka的默认端口
+  
+#eureka 配置
+eureka:
+  client:
+    service-url:
+       defaultZone: http://user:password123@localhost:8761/eureka    #这个是eureka server授权的模式
+  instance:
+    prefer-ip-address: true  #使用ip  而不是主机名
+  
+#zuul 的配置   
+# forward 表示的是本地的转发
+#zuul:
+#  ignore-security-headers: false  # private boolean ignoreSecurityHeaders = true; 默认为true 
+#  
+
+  
+
+
+    
+
+
+
+    
+    
+    
+    
+    
+    

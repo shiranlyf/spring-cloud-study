@@ -1,0 +1,21 @@
+#登录密码配置
+security:
+  basic:
+    enabled: true
+  user:
+    name: user    #这里配置了用户名和登录密码就不会随机生成了
+    password: password123      
+
+server:
+  port: 8080
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shiranlyf/spring-cloud #.git后缀名可以不要
+          username:    #进行用户名和密码的验证
+          password: 
+         
+

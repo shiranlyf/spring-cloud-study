@@ -1,0 +1,4 @@
+server:
+  port: 7901   #消费者只需要进行端口的配置
+user: 
+  userServicePath: http://localhost:7900/simple/

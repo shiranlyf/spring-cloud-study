@@ -1,0 +1,33 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user # login username  这里配置用户名和密码要与下面的保持一致
+    password: password123
+server:
+  port: 8761   #eureka的默认端口
+  
+eureka:
+  datacenter: cloud     #配置的eureka的System.status
+  environment: product  #表示的是生产环境
+  client:
+    healthcheck:   #这个配置的源码  EurekaDiscoveryClientConfiguration(eureka.client.healthcheck.enabled)
+      enabled: true
+    register-with-eureka: false  #一个euraka server也有一个eureka client(和其他的eureka进行同步)
+    fetch-registry: false        #这两行表示不作为eureka client(这里是单机)
+    service-url:
+       defaultZone: http://user:password123@localhost:8761/eureka    #这个是eureka server授权的模式
+#      defaultZone: http://localhost:8761/eureka  #这个表示的是eureka注册的url的地址
+#  dashboard:
+#    enabled: true  #首页的报404
+#    path: /x  #eureka的定义  默认为/  http://localhost:8761/x
+#eureka.datacenter: cloud  配置的一种格式
+#eureka.environment: product
+
+    
+    
+    
+    
+    
+    
+    

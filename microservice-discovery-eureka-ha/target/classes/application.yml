@@ -1,0 +1,44 @@
+#进行了相互的注册     这就完成了一个同步
+# Cannot execute request on any known server(这个错误信息的解决方法     在window的host中进行配置)
+#C:\Windows\System32\drivers\etc\hosts
+#spring cloud eureka-ha configuration
+#127.0.0.1  peer1 peer2
+spring:
+  application:
+    name: EUREKA-HA
+---
+server:
+  port: 8761
+spring:
+  profiles: peer1   #表示进行启动profiles
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8762/eureka/,http://peer3:8763/eureka/   #peer2,peer3是peer1的对等体
+
+---
+server:
+  port: 8762
+spring:
+  profiles: peer2    
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/,http://peer3:8763/eureka/
+
+#第三个节点的配置信息  zk需要进行奇数个的注册  zk启动的时候第一个节点也会报错   会进行同步    所以注册了三台机器
+---
+server:
+  port: 8763
+spring:
+  profiles: peer3 
+eureka:
+  instance:
+    hostname: peer3
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/

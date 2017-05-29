@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+#配置文件的执行顺序 bootstrap --> 8888(The Bootstrap Application Context)
+#profile属性在这里设置 进行覆盖git远端   
+spring:
+  application:
+    name: foobar  #这里指定的是虚拟主机名   和eureka.instance.appname指定的是一样
+
+ 
+    
+    
+    
+    
+    
+    

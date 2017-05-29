@@ -1,0 +1,7 @@
+#profile: abc
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8080  
+      profile: dev
+      label: master #当configure的后端存贮是git 默认是master

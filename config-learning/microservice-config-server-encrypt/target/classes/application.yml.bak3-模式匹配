@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  
+# spring cloud config 配置  微服务对应一个 application 
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shiranlyf/spring-cloud   #公共 
+          repos:
+            simple: https://github.com/shiranlyf/simple   #下一级
+            special:
+              pattern: special*/dev*,special*/test* #application/profile   这里进行模式匹配
+              uri: https://github.com/shiranlyf/special
+
+    
+    

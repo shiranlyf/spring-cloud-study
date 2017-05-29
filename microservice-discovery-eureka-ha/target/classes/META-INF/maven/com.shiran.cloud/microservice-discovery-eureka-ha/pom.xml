@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.shiran.cloud</groupId>
+		<artifactId>microservice-spring-cloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<artifactId>microservice-discovery-eureka-ha</artifactId>
+	<packaging>jar</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+    
+    <!-- 应用了pom的统一版本之后  就不需要添加版本信息了 -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+		
+		<!-- eureka server 安全认证   添加了这个依赖  会随机生成密码  用户名是user
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		-->
+		
+		
+	</dependencies>
+
+
+</project>

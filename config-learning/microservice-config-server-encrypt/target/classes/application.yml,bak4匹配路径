@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shiranlyf/spring-cloud/
+          searchPaths: 
+            - foo         #路径  相应仓库中 foo/foo-dev.yml(profile: foo-dev) 访问路径(localhost:8080/master/foo-dev.properties)
+            - bar         #路径 同上
+          
+  
+
+    
+    
